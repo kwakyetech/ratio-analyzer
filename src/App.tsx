@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, Cell } from 'recharts';
-import { TrendingUp, DollarSign, Activity, Settings, Info, Briefcase } from 'lucide-react';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Cell } from 'recharts';
+import { ArrowUp, DollarSign, Activity, Settings, BriefcaseBusiness } from 'lucide-react';
 
 function App() {
   // Input State
@@ -116,13 +116,13 @@ function App() {
           <MetricCard
             title="Current Ratio"
             value={ratios.currentRatio.toFixed(2)}
-            icon={<Briefcase className="w-5 h-5 text-blue-500" />}
+            icon={<BriefcaseBusiness className="w-5 h-5 text-blue-500" />}
             trend={ratios.currentRatio > 1.5 ? 'positive' : 'negative'}
           />
           <MetricCard
             title="ROA"
             value={`${ratios.roa.toFixed(2)}%`}
-            icon={<TrendingUp className="w-5 h-5 text-purple-500" />}
+            icon={<ArrowUp className="w-5 h-5 text-purple-500" />}
             trend={ratios.roa > 5 ? 'positive' : 'neutral'}
           />
           <MetricCard
@@ -174,20 +174,18 @@ function App() {
                       />
                     </div>
                   </div>
-                  <div className="h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={liquidityData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                          {liquidityData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.fill} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
+                  <div className="h-64 flex justify-center">
+                    <BarChart width={500} height={250} data={liquidityData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                        {liquidityData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.fill} />
+                        ))}
+                      </Bar>
+                    </BarChart>
                   </div>
                 </div>
               </div>
@@ -243,20 +241,18 @@ function App() {
                       />
                     </div>
                   </div>
-                  <div className="h-64">
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={efficiencyData}>
-                        <CartesianGrid strokeDasharray="3 3" />
-                        <XAxis dataKey="name" />
-                        <YAxis />
-                        <Tooltip />
-                        <Bar dataKey="value" radius={[4, 4, 0, 0]}>
-                          {efficiencyData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.fill} />
-                          ))}
-                        </Bar>
-                      </BarChart>
-                    </ResponsiveContainer>
+                  <div className="h-64 flex justify-center">
+                    <BarChart width={500} height={250} data={efficiencyData}>
+                      <CartesianGrid strokeDasharray="3 3" />
+                      <XAxis dataKey="name" />
+                      <YAxis />
+                      <Tooltip />
+                      <Bar dataKey="value" radius={[4, 4, 0, 0]}>
+                        {efficiencyData.map((entry, index) => (
+                          <Cell key={`cell-${index}`} fill={entry.fill} />
+                        ))}
+                      </Bar>
+                    </BarChart>
                   </div>
                 </div>
               </div>
